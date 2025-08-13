@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Play, Star, Users, TrendingUp, ArrowRight } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
+import AuthDialog from './AuthDialog';
 import heroImage from '@/assets/hero-interview.jpg';
 
 interface HeroSectionProps {
@@ -8,6 +10,14 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ onStartInterview }: HeroSectionProps) => {
+  const { isAuthenticated } = useAuth();
+
+  const handleStartInterview = () => {
+    if (isAuthenticated) {
+      onStartInterview();
+    }
+  };
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-background via-accent/30 to-primary/5">
       {/* Background Pattern */}
@@ -54,16 +64,33 @@ const HeroSection = ({ onStartInterview }: HeroSectionProps) => {
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                variant="hero" 
-                size="lg" 
-                onClick={onStartInterview}
-                className="gap-2 text-base"
-              >
-                <Play className="h-5 w-5" />
-                Start Interview
-                <ArrowRight className="h-4 w-4" />
-              </Button>
+              {isAuthenticated ? (
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  onClick={handleStartInterview}
+                  className="gap-2 text-base"
+                >
+                  <Play className="h-5 w-5" />
+                  Start Interview
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              ) : (
+                <AuthDialog
+                  trigger={
+                    <Button 
+                      variant="hero" 
+                      size="lg" 
+                      className="gap-2 text-base"
+                    >
+                      <Play className="h-5 w-5" />
+                      Start Interview
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  }
+                  defaultTab="register"
+                />
+              )}
               <Button variant="outline" size="lg" className="gap-2 text-base">
                 <Users className="h-5 w-5" />
                 View Demo

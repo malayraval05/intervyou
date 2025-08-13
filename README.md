@@ -1,73 +1,173 @@
-# Welcome to your Lovable project
+# 🎯 IntervYou - AI-Powered Interview Preparation Platform
 
-## Project info
+> **Master your next interview with AI-powered practice sessions, real-time feedback, and personalized coaching.**
 
-**URL**: https://lovable.dev/projects/a37d9d83-6460-42f5-9223-2affae24c0a4
+## ✨ Features
 
-## How can I edit this code?
+### 🔐 **Authentication System**
+- **User Registration & Login** - Secure account creation with email/username
+- **Session Management** - Persistent login state across browser sessions
+- **User Profiles** - Personalized dashboard with interview history
+- **Database Storage** - Local storage with easy migration to production databases
 
-There are several ways of editing your application.
+### 🎤 **AI Interview Practice**
+- **Real-time AI Interviewer** - Dynamic question generation based on role and experience
+- **Multiple Interview Types** - Technical, Behavioral, System Design, and more
+- **Customizable Sessions** - Set duration, focus areas, and difficulty levels
+- **Instant Feedback** - Get scores and improvement suggestions immediately
 
-**Use Lovable**
+### 📊 **Analytics & Progress**
+- **Performance Tracking** - Monitor your interview skills over time
+- **Detailed Analytics** - View strengths, weaknesses, and improvement areas
+- **Interview History** - Review past sessions and feedback
+- **Progress Dashboard** - Visual representation of your growth
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a37d9d83-6460-42f5-9223-2affae24c0a4) and start prompting.
+### 🎨 **Modern UI/UX**
+- **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- **Dark/Light Mode** - Beautiful themes with smooth transitions
+- **Accessible Interface** - WCAG compliant with keyboard navigation
+- **Smooth Animations** - Engaging micro-interactions and transitions
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Quick Start
 
-**Use your preferred IDE**
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/intervyou-ai-prep.git
+   cd intervyou-ai-prep
+   ```
 
-Follow these steps:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. **Open your browser**
+   Navigate to `http://localhost:5173`
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🛠️ Tech Stack
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### **Frontend**
+- **React 18** - Modern React with hooks and functional components
+- **TypeScript** - Type-safe development experience
+- **Vite** - Lightning-fast build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **Shadcn/ui** - Beautiful, accessible component library
+
+### **State Management**
+- **React Context** - Authentication and app state management
+- **React Query** - Server state management and caching
+
+### **Authentication**
+- **Custom Auth System** - Secure user registration and login
+- **Local Storage** - Session persistence (easily replaceable with real DB)
+- **Form Validation** - Comprehensive input validation and error handling
+
+### **Database**
+- **Local Storage** - Development database (production-ready alternatives below)
+- **Interview Sessions** - Complete interview data storage
+- **User Profiles** - User data and preferences management
+
+## 📁 Project Structure
+
+```
+intervyou-ai-prep/
+├── src/
+│   ├── components/          # React components
+│   │   ├── ui/             # Shadcn/ui components
+│   │   ├── AuthDialog.tsx  # Authentication modal
+│   │   ├── Header.tsx      # Navigation header
+│   │   ├── HeroSection.tsx # Landing page hero
+│   │   └── ...             # Other components
+│   ├── hooks/              # Custom React hooks
+│   │   └── useAuth.tsx     # Authentication hook
+│   ├── lib/                # Utility libraries
+│   │   ├── auth.ts         # Authentication service
+│   │   ├── database.ts     # Database operations
+│   │   └── utils.ts        # Helper functions
+│   ├── pages/              # Page components
+│   └── assets/             # Static assets
+├── public/                 # Public assets
+└── README.md              # This file
 ```
 
-**Edit a file directly in GitHub**
+## 🎯 Usage
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### For Job Seekers
+1. **Create Account** - Sign up with email and password
+2. **Choose Interview Type** - Select your target role and experience level
+3. **Practice Sessions** - Answer AI-generated questions in real-time
+4. **Review Feedback** - Get detailed analysis and improvement suggestions
+5. **Track Progress** - Monitor your performance over time
 
-**Use GitHub Codespaces**
+### For Developers
+The codebase is well-documented and follows React best practices:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```tsx
+// Example: Using authentication in components
+import { useAuth } from '@/hooks/useAuth';
 
-## What technologies are used for this project?
+const MyComponent = () => {
+  const { user, isAuthenticated, login, logout } = useAuth();
+  
+  if (!isAuthenticated) {
+    return <AuthDialog />;
+  }
+  
+  return <div>Welcome, {user?.username}!</div>;
+};
+```
 
-This project is built with:
+## 🚀 Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Vercel (Recommended)
+1. Connect your GitHub repository to Vercel
+2. Vercel will automatically detect the Vite configuration
+3. Deploy with one click
 
-## How can I deploy this project?
+### Netlify
+1. Build the project: `npm run build`
+2. Upload the `dist` folder to Netlify
+3. Configure redirects for SPA routing
 
-Simply open [Lovable](https://lovable.dev/projects/a37d9d83-6460-42f5-9223-2affae24c0a4) and click on Share -> Publish.
+## 📚 Documentation
 
-## Can I connect a custom domain to my Lovable project?
+- **Authentication Guide**: [AUTHENTICATION_README.md](AUTHENTICATION_README.md)
+- **API Documentation**: See `src/lib/` for service implementations
+- **Component Library**: See `src/components/ui/` for reusable components
 
-Yes, you can!
+## 🤝 Contributing
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Shadcn/ui** - Beautiful component library
+- **Lucide React** - Icon library
+- **Tailwind CSS** - Utility-first CSS framework
+- **Vite** - Build tool and dev server
+
+---
+
+<div align="center">
+  <p>Made with ❤️ by <a href="https://github.com/YOUR_USERNAME">Your Name</a></p>
+  <p>If this project helps you, please give it a ⭐️</p>
+</div>

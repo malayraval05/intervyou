@@ -1,6 +1,16 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { UserCircle, Settings, BarChart3 } from 'lucide-react';
+import { UserCircle, Settings, BarChart3, LogOut, User } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
+import AuthDialog from './AuthDialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 interface HeaderProps {
   onNavigate?: (section: string) => void;
@@ -8,6 +18,8 @@ interface HeaderProps {
 }
 
 const Header = ({ onNavigate, currentSection = 'home' }: HeaderProps) => {
+  const { user, isAuthenticated, logout } = useAuth();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 py-4">
@@ -67,13 +79,58 @@ const Header = ({ onNavigate, currentSection = 'home' }: HeaderProps) => {
             <Button variant="ghost" size="icon">
               <Settings className="h-4 w-4" />
             </Button>
-            <Button variant="outline" size="sm" className="gap-2">
-              <UserCircle className="h-4 w-4" />
-              Sign In
-            </Button>
-            <Button variant="hero" size="sm">
-              Get Started
-            </Button>
+            
+            {isAuthenticated ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <User className="h-4 w-4" />
+                    {user?.username}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium leading-none">{user?.username}</p>
+                      <p className="text-xs leading-none text-muted-foreground">{user?.email}</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Settings</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={logout}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <>
+                <AuthDialog 
+                  trigger={
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <UserCircle className="h-4 w-4" />
+                      Sign In
+                    </Button>
+                  }
+                />
+                <AuthDialog 
+                  trigger={
+                    <Button variant="hero" size="sm">
+                      Get Started
+                    </Button>
+                  }
+                  defaultTab="register"
+                />
+              </>
+            )}
           </div>
         </div>
       </div>
