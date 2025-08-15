@@ -38,8 +38,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/intervyou-ai-prep.git
-   cd intervyou-ai-prep
+   git clone https://github.com/malayraval05/intervyou.git
+   cd intervyou
    ```
 
 2. **Install dependencies**
@@ -81,7 +81,7 @@
 ## 📁 Project Structure
 
 ```
-intervyou-ai-prep/
+intervyou/
 ├── src/
 │   ├── components/          # React components
 │   │   ├── ui/             # Shadcn/ui components
@@ -168,6 +168,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <div align="center">
-  <p>Made with ❤️ by <a href="https://github.com/YOUR_USERNAME">Your Name</a></p>
+  <p>Made with ❤️ <a href="https://github.com/malayraval05"> </a></p>
   <p>If this project helps you, please give it a ⭐️</p>
 </div>
