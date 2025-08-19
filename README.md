@@ -8,7 +8,7 @@
 - **User Registration & Login** - Secure account creation with email/username
 - **Session Management** - Persistent login state across browser sessions
 - **User Profiles** - Personalized dashboard with interview history
-- **Database Storage** - Local storage with easy migration to production databases
+- **Database Storage** - Local storage (no external database configured yet)
 
 ### 🎤 **AI Interview Practice**
 - **Real-time AI Interviewer** - Dynamic question generation based on role and experience
@@ -38,7 +38,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/malayraval05/intervyou.git
+   git clone <your_repo_url>
    cd intervyou
    ```
 
@@ -74,7 +74,7 @@
 - **Form Validation** - Comprehensive input validation and error handling
 
 ### **Database**
-- **Local Storage** - Development database (production-ready alternatives below)
+- **Local Storage** - Development-only storage
 - **Interview Sessions** - Complete interview data storage
 - **User Profiles** - User data and preferences management
 
@@ -130,15 +130,10 @@ const MyComponent = () => {
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Vercel will automatically detect the Vite configuration
-3. Deploy with one click
-
-### Netlify
-1. Build the project: `npm run build`
-2. Upload the `dist` folder to Netlify
-3. Configure redirects for SPA routing
+Deployment is not configured yet. Current focus is local development. Build locally with:
+```bash
+npm run build
+```
 
 ## 📚 Documentation
 

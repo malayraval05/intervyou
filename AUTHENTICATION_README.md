@@ -22,11 +22,7 @@ This project now includes a complete authentication system with user registratio
 
 ### 2. Database Storage
 
-The system uses a simple localStorage-based database that can be easily replaced with:
-- **MongoDB**: For document-based storage
-- **PostgreSQL**: For relational data
-- **Firebase**: For real-time authentication
-- **Supabase**: For open-source Firebase alternative
+The system uses a simple localStorage-based store for development. No external database is configured at this stage.
 
 ### 3. Security Features
 
@@ -96,24 +92,9 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 };
 ```
 
-#### Replacing with Real Database
+#### Replacing with Real Database (Future Work)
 
-1. **MongoDB Example**:
-```tsx
-// Replace database.ts with MongoDB connection
-import { MongoClient } from 'mongodb';
-
-const client = new MongoClient('mongodb://localhost:27017');
-const db = client.db('intervyou');
-const users = db.collection('users');
-```
-
-2. **Firebase Example**:
-```tsx
-// Replace auth.ts with Firebase Auth
-import { auth } from './firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-```
+In a future milestone, you can integrate a real backend/database. For now, keep logic in `src/lib/database.ts`.
 
 ## Testing the System
 

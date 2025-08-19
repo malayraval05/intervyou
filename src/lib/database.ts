@@ -1,5 +1,4 @@
-// Simple database service for user management
-// In production, replace this with a real database like MongoDB, PostgreSQL, or Firebase
+// Simple in-browser storage for user and session data (development only)
 
 export interface User {
   id: string;
